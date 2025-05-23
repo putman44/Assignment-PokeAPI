@@ -3,14 +3,18 @@ const fetchPokemon = async () => {
   pokemonContainer.classList.remove("d-none");
   pokemonContainer.innerHTML = `<div><p>Loading...</p></div>`;
 
+  const pokemonInput = document.getElementById("basic-url").value;
+
   try {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon/ditto");
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${pokemonInput}`
+    );
     if (!response.ok) throw new Error("Pokémon not found");
     const data = await response.json();
 
     // Second request to get flavor text description
     const speciesResponse = await fetch(
-      "https://pokeapi.co/api/v2/pokemon-species/ditto"
+      `https://pokeapi.co/api/v2/pokemon-species/${pokemonInput}`
     );
     const speciesData = await speciesResponse.json();
 
