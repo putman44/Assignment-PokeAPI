@@ -9,7 +9,7 @@ const fetchPokemon = async () => {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemonInput}`
     );
-    if (!response.ok) throw new Error("Pokémon not found");
+
     const data = await response.json();
 
     // Second request to get flavor text description
