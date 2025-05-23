@@ -42,7 +42,7 @@ const fetchPokemon = async () => {
       <p class="card-text">${description}</p>
       <p class="card-text"><strong>Height:</strong> ${
         data.height
-      }, <strong>Weight:</strong> ${data.weight}</p>
+      } <strong>Weight:</strong> ${data.weight}</p>
       <p class="card-text"><strong>Moves:</strong></p>
       <ul>${data.moves
         .slice(0, 5)
