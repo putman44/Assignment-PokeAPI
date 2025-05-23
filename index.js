@@ -1,5 +1,13 @@
 const fetchPokemon = async () => {
   const name = document.getElementById("basic-url").value.trim();
+  document
+    .getElementById("basic-url")
+    .addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        fetchPokemon();
+      }
+    });
 
   fetchAndRenderPokemon(name);
 };
