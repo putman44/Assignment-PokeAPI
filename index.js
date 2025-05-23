@@ -34,15 +34,19 @@ const fetchAndRenderPokemon = async (pokemonInput) => {
       : "No description available.";
 
     pokemonContainer.innerHTML = `
-      <div class="row border rounded-3 p-3">
-        <div class="col-4 d-flex align-items-center justify-content-center">
-          <img src="${
-            data.sprites.other["official-artwork"].front_default ||
-            data.sprites.front_default
-          }" style="width:100%" alt="${data.name}" />
+      <div class="row border rounded-3">
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+         <img id="pokemon-img"
+     src="${
+       data.sprites.other["official-artwork"].front_default ||
+       data.sprites.front_default
+     }"
+    
+     style="max-width: 100%; "
+     alt="${data.name}" />
         </div>
-        <div class="col-8 card-body">
-          <h5 class="card-title">Name: ${
+        <div class="col-6 my-auto card-body">
+          <h5 class="card-title mb-2">Name: ${
             data.name.charAt(0).toUpperCase() + data.name.slice(1)
           }</h5>
           <p class="card-text">${description}</p>
@@ -58,9 +62,10 @@ const fetchAndRenderPokemon = async (pokemonInput) => {
       </div>`;
   } catch (error) {
     console.error("Error fetching Pokémon:", error.message);
+    document.getElementById("basic-url").value = "";
     pokemonContainer.innerHTML = `
       <div class="alert alert-danger" role="alert">
-        Pokémon name entered incorrectly. Please try again.
+        Pokémon name or ID entered incorrectly. Please try again.
       </div>`;
   }
 };
