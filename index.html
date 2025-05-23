@@ -13,18 +13,27 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="card my-5 mx-auto" style="width: 18rem">
-        <img src="..." class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card’s content.
-          </p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="card my-5 mx-auto p-2" style="width: 18rem">
+        <div class="mb-3">
+          <label for="pokemon-name" class="form-label"
+            >Enter the name of the pokemon you would like to see.</label
+          >
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              id="basic-url"
+              placeholder="Squirtle"
+              aria-describedby="basic-addon3 basic-addon4"
+            />
+          </div>
         </div>
+
+        <button class="btn btn-primary">Fetch Pokemon</button>
       </div>
     </div>
+
+    <div class="container-fluid"></div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
