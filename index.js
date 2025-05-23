@@ -3,7 +3,10 @@ const fetchPokemon = async () => {
   pokemonContainer.classList.remove("d-none");
   pokemonContainer.innerHTML = `<div><p>Loading...</p></div>`;
 
-  const pokemonInput = document.getElementById("basic-url").value;
+  let pokemonInput = document.getElementById("basic-url").value.trim();
+  if (!pokemonInput) {
+    pokemonInput = Math.floor(Math.random() * 898) + 1;
+  }
 
   try {
     const response = await fetch(
