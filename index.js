@@ -23,26 +23,33 @@ const fetchPokemon = async () => {
       (entry) => entry.language.name === "en"
     );
 
-    const description = flavorEntry
+    const description = speciesData.flavor_text_entries
       ? flavorEntry.flavor_text.replace(/\f|\n/g, " ")
       : "No description available.";
 
     pokemonContainer.innerHTML = `
-      <div class="row border rounded-3 p-3">
-        <img id="pokemon-img" src="${
-          data.sprites.other["official-artwork"].front_default ||
-          data.sprites.front_default
-        }" class="col-4" alt="${data.name}" />
-        <div id="pokemon-card" class="col-8 card-body">
-          <h5 class="card-title">Name: ${
-            data.name.charAt(0).toUpperCase() + data.name.slice(1)
-          }</h5>
-          <p class="card-text">${description}</p>
-          <p class="card-text"><strong>Height:</strong> ${
-            data.height
-          } <strong>Weight:</strong> ${data.weight}</p>
-        </div>
-      </div>`;
+  <div class="row border rounded-3 p-3">
+  <div class="col-4 d-flex align-items-center justify-content-center">
+    <img id="pokemon-img" src="${
+      data.sprites.other["official-artwork"].front_default ||
+      data.sprites.front_default
+    }" style="width:100%" alt="${data.name}" />
+    </div>
+    <div id="pokemon-card" class="col-8 card-body">
+      <h5 class="card-title">Name: ${
+        data.name.charAt(0).toUpperCase() + data.name.slice(1)
+      }</h5>
+      <p class="card-text">${description}</p>
+      <p class="card-text"><strong>Height:</strong> ${
+        data.height
+      }, <strong>Weight:</strong> ${data.weight}</p>
+      <p class="card-text"><strong>Moves:</strong></p>
+      <ul>${data.moves
+        .slice(0, 5)
+        .map((move) => `<li>${move.move.name}</li>`)
+        .join("")}</ul>
+    </div>
+  </div>`;
   } catch (error) {
     console.error("Error fetching Pokemon:", error.message);
 
